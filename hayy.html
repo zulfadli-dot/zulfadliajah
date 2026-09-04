@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Video Otomatis</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #teks {
+            color: white;
+            font-size: 28px;
+            font-family: Arial;
+        }
+
+        #video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="teks">Bersiap... 5</div>
+
+<video id="video" autoplay muted playsinline>
+    <source src="VID-20260415-WA0049.mp4" type="video/mp4">
+</video>
+
+<script>
+let angka = 5;
+
+let countdown = setInterval(function () {
+
+    document.getElementById("teks").innerText =
+        "Bersiap... " + angka;
+
+    angka--;
+
+    if (angka < 0) {
+        clearInterval(countdown);
+
+        let teks = document.getElementById("teks");
+        let video = document.getElementById("video");
+
+        teks.style.display = "none";
+        video.style.display = "block";
+
+        video.play();
+
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        }
+    }
+
+}, 1000);
+</script>
+
+</body>
+</html>
