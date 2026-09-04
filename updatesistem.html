@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>System Update</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+#update{width:90%;max-width:500px}
+
+h1{
+    font-size:26px;
+    font-weight:400;
+}
+
+#percent{
+    font-size:64px;
+    margin:25px 0;
+}
+
+.bar{
+    width:100%;
+    height:8px;
+    background:#222;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+#progress{
+    width:0%;
+    height:100%;
+    background:white;
+}
+
+#status{
+    color:#aaa;
+    margin-top:20px;
+}
+
+#prank{
+    display:none;
+}
+
+#prank h1{
+    font-size:42px;
+}
+
+button{
+    margin-top:25px;
+    padding:12px 25px;
+    border:0;
+    border-radius:8px;
+    font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="update">
+
+    <h1>System Update</h1>
+
+    <div id="percent">0%</div>
+
+    <div class="bar">
+        <div id="progress"></div>
+    </div>
+
+    <p id="status">Preparing update...</p>
+
+</div>
+
+<div id="prank">
+
+    <h1>😂 KENA PRANK!</h1>
+
+    <p>Tenang, tidak ada apa-apa yang terjadi.</p>
+    <p>Ini cuma simulasi update palsu 😎</p>
+
+    <button onclick="location.reload()">
+        Ulangi
+    </button>
+
+</div>
+
+<script>
+
+let persen = 0;
+
+let statusText = [
+    "Preparing update...",
+    "Checking system...",
+    "Installing components...",
+    "Optimizing system...",
+    "Finalizing update..."
+];
+
+let timer = setInterval(() => {
+
+    persen += Math.floor(Math.random()*4) + 1;
+
+    if(persen >= 100){
+        persen = 100;
+        clearInterval(timer);
+
+        document.getElementById("status").innerText =
+        "Update completed.";
+
+        setTimeout(() => {
+
+            document.getElementById("update").style.display="none";
+            document.getElementById("prank").style.display="block";
+
+        },2000);
+
+    }else{
+
+        document.getElementById("status").innerText =
+        statusText[Math.floor(persen/25)] ||
+        statusText[4];
+
+    }
+
+    document.getElementById("percent").innerText =
+    persen + "%";
+
+    document.getElementById("progress").style.width =
+    persen + "%";
+
+},500);
+
+</script>
+
+</body>
+</html>
