@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Good Night ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #292052, #0b0718 70%);
+    color: white;
+}
+
+/* Bintang */
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: blink 2s infinite alternate;
+}
+
+@keyframes blink {
+    from { opacity: .2; }
+    to { opacity: 1; }
+}
+
+/* Bulan */
+.moon {
+    position: absolute;
+    top: 10%;
+    right: 12%;
+    width: 100px;
+    height: 100px;
+    background: #fff8d6;
+    border-radius: 50%;
+    box-shadow: 0 0 40px #fff8d6;
+}
+
+/* Konten */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    z-index: 5;
+}
+
+h1 {
+    font-size: clamp(45px, 10vw, 85px);
+    font-weight: 500;
+    letter-spacing: 3px;
+    animation: muncul 2.5s ease;
+    text-shadow: 0 0 25px rgba(255,255,255,.5);
+}
+
+.subtitle {
+    margin-top: 15px;
+    font-size: clamp(16px, 4vw, 23px);
+    opacity: 0;
+    animation: muncul 2.5s ease 1.5s forwards;
+}
+
+.line {
+    width: 0;
+    height: 1px;
+    background: white;
+    margin: 25px auto;
+    animation: garis 2s ease 2.5s forwards;
+}
+
+.love {
+    font-size: 25px;
+    opacity: 0;
+    animation: muncul 2s ease 3s forwards;
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes garis {
+    to {
+        width: 180px;
+    }
+}
+
+/* Hati */
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    animation: naik linear infinite;
+    opacity: .8;
+}
+
+@keyframes naik {
+    0% {
+        transform: translateY(0) scale(.8);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Tombol */
+button {
+    margin-top: 30px;
+    padding: 12px 28px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 30px;
+    background: rgba(255,255,255,.08);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    background: rgba(255,255,255,.2);
+}
+</style>
+</head>
+
+<body>
+
+<div class="moon"></div>
+
+<!-- Bintang -->
+<div class="star" style="top:12%;left:10%"></div>
+<div class="star" style="top:25%;left:20%"></div>
+<div class="star" style="top:15%;left:35%"></div>
+<div class="star" style="top:35%;left:50%"></div>
+<div class="star" style="top:20%;left:65%"></div>
+<div class="star" style="top:45%;left:80%"></div>
+<div class="star" style="top:65%;left:15%"></div>
+<div class="star" style="top:70%;left:40%"></div>
+<div class="star" style="top:55%;left:60%"></div>
+<div class="star" style="top:75%;left:85%"></div>
+
+<div class="container">
+
+    <h1>Selamat Tidur ❤️</h1>
+
+    <div class="line"></div>
+
+    <p class="subtitle">
+        Semoga malam ini membawa mimpi yang indah ✨
+    </p>
+
+    <p class="love">
+        Jangan lupa tersenyum sebelum memejamkan mata 🌙
+    </p>
+
+    <button onclick="pesan()">
+        Untukmu ❤️
+    </button>
+
+</div>
+
+<script>
+
+/* Membuat hati secara otomatis */
+function buatHati() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = "♥";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (Math.random() * 20 + 12) + "px";
+
+    heart.style.animationDuration =
+        (Math.random() * 5 + 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+setInterval(buatHati, 500);
+
+
+/* Tombol */
+function pesan() {
+
+    alert(
+        "Selamat tidur aira ❤️\n\n" +
+        "semoga malam ini kamu tidur dengan tenang,\n" +
+        "dan tentram,\n" +
+        "biarkan malam membawamu\n" +
+        "ke mimpi yang indah. 🌙✨"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
